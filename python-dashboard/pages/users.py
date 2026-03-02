@@ -114,7 +114,7 @@ with col1:
                  },
                  hole=0.4)
     fig.update_traces(textposition='inside', textinfo='percent+label')
-    st.plotly_chart(fig, use_container_width=True)
+    st.plotly_chart(fig, width='stretch')
 
 with col2:
     st.subheader("Revenue by Segment")
@@ -130,7 +130,7 @@ with col2:
                      'New': '#10B981'
                  })
     fig.update_traces(texttemplate='₹%{y:,.0f}', textposition='outside')
-    st.plotly_chart(fig, use_container_width=True)
+    st.plotly_chart(fig, width='stretch')
 
 st.markdown("---")
 

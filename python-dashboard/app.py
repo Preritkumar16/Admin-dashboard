@@ -184,8 +184,7 @@ with tab_home:
     # Recent Orders
     st.markdown("---")
     st.subheader("Recent Orders")
-    st.dataframe(filtered_orders[['order_id', 'timestamp', 'amount', 'status', 'category']].tail(10),
-                 width='stretch')
+    st.dataframe(filtered_orders[['order_id', 'timestamp', 'amount', 'status', 'category']].tail(10))
 
 # ============ ANALYTICS TAB ============
 with tab_analytics:
@@ -226,8 +225,7 @@ with tab_orders:
     else:
         orders_display = filtered_orders
     
-    st.dataframe(orders_display[['order_id', 'timestamp', 'amount', 'status', 'category']],
-                 width='stretch')
+    st.dataframe(orders_display[['order_id', 'timestamp', 'amount', 'status', 'category']])
 
 # ============ USERS TAB ============
 with tab_users:

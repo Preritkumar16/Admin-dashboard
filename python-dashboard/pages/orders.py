@@ -132,9 +132,8 @@ elif sort_by == 'amount':
 else:
     table_orders = table_orders.sort_values(sort_by, ascending=False)
 
-st.dataframe(
+    st.dataframe(
     table_orders[['order_id', 'timestamp', 'customer_id', 'amount', 'category', 'status']],
-    use_container_width=True,
     height=400
 )
 
@@ -151,7 +150,7 @@ with col1:
                  title='Number of Orders by Category',
                  color='count',
                  color_continuous_scale='Blues')
-    st.plotly_chart(fig, use_container_width=True)
+    st.plotly_chart(fig, width='stretch')
 
 with col2:
     st.subheader("Average Order Value by Category")
@@ -160,7 +159,7 @@ with col2:
                  title='Average Order Value by Category',
                  color='amount',
                  color_continuous_scale='Greens')
-    st.plotly_chart(fig, use_container_width=True)
+    st.plotly_chart(fig, width='stretch')
 
 # Recent Orders
 st.markdown("---")
