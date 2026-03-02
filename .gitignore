@@ -38,3 +38,6 @@ data/*.csv
 
 # Logs
 *.log
+
+# Git installer
+git-installer.exe
