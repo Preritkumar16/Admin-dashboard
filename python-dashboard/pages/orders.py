@@ -162,7 +162,7 @@ with col2:
     st.plotly_chart(fig, width='stretch')
 
 # Recent Orders
-st.markdown("---")
+st.markdown("---") 
 st.header("🕐 Recent Orders")
 
 recent = filtered_orders.tail(20)[['order_id', 'timestamp', 'customer_id', 'amount', 'category', 'status']]
