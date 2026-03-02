@@ -269,3 +269,31 @@ def top_products(df, key=None):
     fig.update_traces(texttemplate='₹%{text:,.0f}', textposition='inside')
     fig.update_layout(yaxis_title='Category', xaxis_title='Revenue (₹)')
     st.plotly_chart(fig, width='stretch', key=key)
+
+def revenue_breakdown(df, key=None):
+    """Revenue breakdown by category and status"""
+    # Category breakdown
+    cat_rev = df.groupby('category')['amount'].sum().reset_index()
+    cat_rev = cat_rev.sort_values('amount', ascending=False)
+    
+    fig1 = px.bar(cat_rev, x='category', y='amount',
+                   title='Revenue by Category',
+                   color='amount',
+                   color_continuous_scale='Viridis',
+                   text='amount')
+    fig1.update_traces(texttemplate='₹%{text:,.0f}', textposition='outside')
+    fig1.update_layout(xaxis_title='Category', yaxis_title='Revenue (₹)')
+    st.plotly_chart(fig1, width='stretch', key=f"{key}_cat" if key else None)
+    
+    # Status breakdown
+    status_rev = df.groupby('status')['amount'].sum().reset_index()
+    status_rev = status_rev.sort_values('amount', ascending=False)
+    
+    fig2 = px.bar(status_rev, x='status', y='amount',
+                   title='Revenue by Status',
+                   color='status',
+                   color_discrete_sequence=px.colors.qualitative.Set2,
+                   text='amount')
+    fig2.update_traces(texttemplate='₹%{text:,.0f}', textposition='outside')
+    fig2.update_layout(xaxis_title='Status', yaxis_title='Revenue (₹)')
+    st.plotly_chart(fig2, width='stretch', key=f"{key}_status" if key else None)
